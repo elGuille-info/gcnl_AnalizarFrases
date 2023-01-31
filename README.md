@@ -1,0 +1,1 @@
+# gcnl AnalizarFrases
