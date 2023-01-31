@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>gcnl_AnalizarFrases</RootNamespace>
+    <!--<ImplicitUsings>enable</ImplicitUsings>-->
+    <Nullable>enable</Nullable>
+      <Title>gcnl AnalizarFrases</Title>
+      <Description>
+          Analizar frases usando Google Cloud Natural Language API
+          Revisión actual del 31/ene/2023
+      </Description>
+      <Authors>Guillermo Som</Authors>
+      <Company>Guille</Company>
+      <Version>1.0</Version>
+      <Copyright>Guillermo Som (Guille), 2023</Copyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Language.V1" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="key.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

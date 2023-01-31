@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gcnl_AnalizarFrases_MAUI.MainPage"
+             Appearing="ContentPage_Appearing"
+             Title="Analizar frases usando Cloud Natural Language">
+    <ScrollView Padding="10">
+        <VerticalStackLayout Spacing="6">
+            <StackLayout BackgroundColor="SteelBlue" Padding="6">
+                <Label Text="Analizar frases con Google Cloud Natural Language"
+                       FontSize="Title" FontAttributes="Bold" 
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+            <Frame>
+                <StackLayout >
+                    <Label Text="Selecciona o indica el texto a analizar:"/>
+                    <Label />
+                    <StackLayout>
+                        <ListView x:Name="listViewFrases" HeightRequest="300"
+                                  BackgroundColor="WhiteSmoke"
+                                  VerticalOptions="StartAndExpand" 
+                                  ItemSelected="listViewFrases_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding .}" HeightRequest="25"
+                                               BackgroundColor="Transparent" TextColor="SteelBlue" />
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <Label />
+                    <StackLayout Orientation="Horizontal" Spacing="8" Margin="0">
+                        <Label Text="Texto:"/>
+                        <Entry x:Name="txtTexto" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

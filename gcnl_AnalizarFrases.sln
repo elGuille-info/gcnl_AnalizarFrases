@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl_AnalizarFrases", "gcnl_AnalizarFrases\gcnl_AnalizarFrases.csproj", "{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gcnl AnalizarFrases MAUI", "gcnl AnalizarFrases MAUI\gcnl AnalizarFrases MAUI.csproj", "{504BF0D3-3D0B-4A04-8BC2-773895BED17D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B618448B-0664-4134-AE6B-ED44B0F51311}
+	EndGlobalSection
+EndGlobal
