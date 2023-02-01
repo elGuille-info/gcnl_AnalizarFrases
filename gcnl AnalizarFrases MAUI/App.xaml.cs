@@ -16,7 +16,7 @@ namespace gcnl_AnalizarFrases_MAUI
             // En iPhone no llega aquí
             CopiarGoogleCredentials();
 
-            var env = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
+            //var env = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
 
 
             // Indicar el tamaño para la app de Windows.
@@ -25,8 +25,10 @@ namespace gcnl_AnalizarFrases_MAUI
 #if WINDOWS
 
                 // Asignar manualmente el tamaño. 
-                int winWidth = 830; // 1200; // 1700; // 2800;
-                int winHeight = 1600; //1800
+                // Según mis cálculos, el tamaño mostrado por Width y Height de la ventana principal
+                // Es 15 menos del ancho aquí indicado y ~57 menos del alto indicado
+                int winWidth = 830+15; // 830; // 1200; // 1700; // 2800;
+                int winHeight = 825+57; // 825; // 865; // 1600; //1800
 
                 var mauiWindow = handler.VirtualView;
                 var nativeWindow = handler.PlatformView;

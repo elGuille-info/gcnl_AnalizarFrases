@@ -351,6 +351,26 @@ namespace gcnl_AnalizarFrases_MAUI
             }
         }
 
+        private void LabelStatus_SizeChanged(object sender, EventArgs e)
+        {
+            //DisplayInfo disp = DeviceDisplay.Current.MainDisplayInfo;
+            //LabelStatus.Text = $"Width {(int)Width} ({(int)(Width * disp.Density)}) Height {(int)Height} ({(int)(Height * disp.Density)})";
+
+            //// El tamaño de la pantalla de este equipo.
+            //int screenW = (int)(disp.Width / disp.Density);
+            //int screenH = (int)(disp.Height / disp.Density);
+            //LabelStatus.Text = $"Width {screenW} Height {screenH}";
+
+            LabelStatus.Text = $"Width: {(int)Width}, Height: {(int)Height}";
+
+            //var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+            //// Width (in pixels)
+            //var width = mainDisplayInfo.Width;
+            //// Height (in pixels)
+            //var height = mainDisplayInfo.Height;
+            //LabelStatus.Text = $"Width {width} ({(int)Width}) Height {height} ({(int)Height})";
+        }
+
         private void MostrarTokenPartOfSpeech(Token token)
         {
             if (token == null) return;

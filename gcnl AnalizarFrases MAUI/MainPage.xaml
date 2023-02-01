@@ -12,7 +12,8 @@
     </ContentPage.Resources>-->
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
-            <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, se evita que se corte el borde del Frame en la pate inferior -->
+            <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, 
+                 se evita que se corte el borde del Frame en la pate inferior -->
             <Frame Padding="6" Margin="0">
                 <StackLayout Margin="2">
                     <StackLayout Spacing="0">
@@ -64,6 +65,10 @@
                 <Editor x:Name="txtResultado" Text="" FontFamily="Consolas"
                         MinimumHeightRequest="500"
                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                <Label x:Name="LabelStatus" Text="" FontSize="13"
+                       VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged"/>
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
