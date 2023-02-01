@@ -42,7 +42,7 @@ namespace gcnl_AnalizarFrases_MAUI
         
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            //grbAviso.IsVisible = false;
+            QuitarAviso();
             // si no hay texto asignado, asignar la última frase de la lista
             if (string.IsNullOrEmpty(txtTexto.Text))
             {
@@ -70,10 +70,11 @@ namespace gcnl_AnalizarFrases_MAUI
             string tmp = txtTexto.Text;
             if (string.IsNullOrEmpty(tmp))
             {
-                grbAviso.BackgroundColor = Colors.Firebrick;
-                //grbAviso.IsVisible = true;
-                LabelAviso.Text = "Por favor indica el texto a analizar de al menos 3 caracteres";
-                LabelAviso.IsVisible = true;
+                MostrarAviso("Por favor indica el texto a analizar de al menos 3 caracteres", esError: true);
+                //grbAviso.BackgroundColor = Colors.Firebrick;
+                ////grbAviso.IsVisible = true;
+                //LabelAviso.Text = "Por favor indica el texto a analizar de al menos 3 caracteres";
+                //LabelAviso.IsVisible = true;
                 txtTexto.Focus();
                 return;
             }
@@ -84,16 +85,17 @@ namespace gcnl_AnalizarFrases_MAUI
             //await AnalizarTexto();
             await Task.Run(() =>
             {
-                grbAviso.Dispatcher.Dispatch(() =>
-                {
-                    grbAviso.BackgroundColor = Colors.SteelBlue;
-                    //grbAviso.IsVisible = true;
-                });
-                LabelAviso.Dispatcher.Dispatch(() =>
-                {
-                    LabelAviso.Text = "Analizando el texto...";
-                    LabelAviso.IsVisible = true;
-                });
+                MostrarAviso("Analizando el texto...", esError: false);
+                //grbAviso.Dispatcher.Dispatch(() =>
+                //{
+                //    grbAviso.BackgroundColor = Colors.SteelBlue;
+                //    //grbAviso.IsVisible = true;
+                //});
+                //LabelAviso.Dispatcher.Dispatch(() =>
+                //{
+                //    LabelAviso.Text = "Analizando el texto...";
+                //    LabelAviso.IsVisible = true;
+                //});
                 frase = Frases.Add(text);
 
                 BtnMostrar1.Dispatcher.Dispatch(() =>
@@ -101,8 +103,9 @@ namespace gcnl_AnalizarFrases_MAUI
                     // Inicialmente mostrar todo
                     BtnMostrar1_Clicked(null, null);
                 });
-                LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.IsVisible = false; });
-                grbAviso.Dispatcher.Dispatch(() => { grbAviso.BackgroundColor = Colors.Transparent; });
+                //LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.IsVisible = false; });
+                //grbAviso.Dispatcher.Dispatch(() => { grbAviso.BackgroundColor = Colors.Transparent; });
+                QuitarAviso();
             });
             
             //LabelAviso.Text = "Analizando el texto...";
@@ -116,6 +119,32 @@ namespace gcnl_AnalizarFrases_MAUI
             //BtnMostrar1_Clicked(null, null);
 
             HabilitarBotones(true);
+        }
+
+        private void QuitarAviso()
+        {
+            LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.IsVisible = false; });
+            grbAviso.Dispatcher.Dispatch(() => { grbAviso.BackgroundColor = Colors.Transparent; });
+        }
+
+        private void MostrarAviso(string aviso, bool esError)
+        {
+            grbAviso.Dispatcher.Dispatch(() =>
+            {
+                if (esError)
+                {
+                    grbAviso.BackgroundColor = Colors.Firebrick;
+                }
+                else
+                {
+                    grbAviso.BackgroundColor = Colors.SteelBlue;
+                }
+            });
+            LabelAviso.Dispatcher.Dispatch(() =>
+            {
+                LabelAviso.Text = aviso;
+                LabelAviso.IsVisible = true;
+            });
         }
 
         //private Task AnalizarTexto()
@@ -190,6 +219,8 @@ namespace gcnl_AnalizarFrases_MAUI
             ultimaOriginal = e.SelectedItem.ToString();
             txtTexto.Text = ultimaOriginal;
             text = ultimaOriginal;
+
+            QuitarAviso();
         }
 
         private void MostrarResumen(bool ultima)

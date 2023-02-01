@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gcnl_AnalizarFrases_MAUI.MainPage"
              Appearing="ContentPage_Appearing"
-             Title="Analizar frases usando Cloud Natural Language">
+             Title="Analizar texto usando Cloud Natural Language">
     <!--<ContentPage.Resources>
         <Style x:Key="EntryText" TargetType="{x:Type Entry}">
             <Setter Property="Keyboard" Value="Text"/>
@@ -12,12 +12,6 @@
     </ContentPage.Resources>-->
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
-            <!--<StackLayout BackgroundColor="SteelBlue" Padding="6">
-                <Label Text="Analizar frases con Google Cloud Natural Language"
-                       FontSize="Title" FontAttributes="Bold" 
-                       TextColor="White"
-                       HorizontalOptions="Center" />
-            </StackLayout>-->
             <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, se evita que se corte el borde del Frame en la pate inferior -->
             <Frame Padding="6" Margin="0">
                 <StackLayout Margin="2">
