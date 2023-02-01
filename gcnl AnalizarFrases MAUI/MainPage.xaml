@@ -46,9 +46,9 @@
                         <Button x:Name="BtnAnalizar" 
                                 Text="Analizar texto" Clicked="BtnAnalizar_Clicked"/>
                         <StackLayout x:Name="grbAviso" Orientation="Horizontal" 
-                                     BackgroundColor="Firebrick"
-                                     Padding="1" IsVisible="False">
-                            <Label x:Name="LabelAviso" TextColor="White"
+                                     BackgroundColor="Transparent"
+                                     Padding="2">
+                            <Label x:Name="LabelAviso" TextColor="White" IsVisible="False"
                                    Text="Por favor indica el texto a analizar de al menos 3 caracteres" />
                         </StackLayout>
                     </VerticalStackLayout>

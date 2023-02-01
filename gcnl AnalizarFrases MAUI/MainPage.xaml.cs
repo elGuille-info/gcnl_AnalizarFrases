@@ -42,7 +42,7 @@ namespace gcnl_AnalizarFrases_MAUI
         
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            grbAviso.IsVisible = false;
+            //grbAviso.IsVisible = false;
             // si no hay texto asignado, asignar la última frase de la lista
             if (string.IsNullOrEmpty(txtTexto.Text))
             {
@@ -70,9 +70,10 @@ namespace gcnl_AnalizarFrases_MAUI
             string tmp = txtTexto.Text;
             if (string.IsNullOrEmpty(tmp))
             {
-                LabelAviso.Text = "Por favor indica el texto a analizar de al menos 3 caracteres";
                 grbAviso.BackgroundColor = Colors.Firebrick;
-                grbAviso.IsVisible = true;
+                //grbAviso.IsVisible = true;
+                LabelAviso.Text = "Por favor indica el texto a analizar de al menos 3 caracteres";
+                LabelAviso.IsVisible = true;
                 txtTexto.Focus();
                 return;
             }
@@ -83,11 +84,15 @@ namespace gcnl_AnalizarFrases_MAUI
             //await AnalizarTexto();
             await Task.Run(() =>
             {
-                LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.Text = "Analizando el texto..."; });
                 grbAviso.Dispatcher.Dispatch(() =>
                 {
                     grbAviso.BackgroundColor = Colors.SteelBlue;
-                    grbAviso.IsVisible = true;
+                    //grbAviso.IsVisible = true;
+                });
+                LabelAviso.Dispatcher.Dispatch(() =>
+                {
+                    LabelAviso.Text = "Analizando el texto...";
+                    LabelAviso.IsVisible = true;
                 });
                 frase = Frases.Add(text);
 
@@ -96,7 +101,8 @@ namespace gcnl_AnalizarFrases_MAUI
                     // Inicialmente mostrar todo
                     BtnMostrar1_Clicked(null, null);
                 });
-                grbAviso.Dispatcher.Dispatch(() => { grbAviso.IsVisible = false; });
+                LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.IsVisible = false; });
+                grbAviso.Dispatcher.Dispatch(() => { grbAviso.BackgroundColor = Colors.Transparent; });
             });
             
             //LabelAviso.Text = "Analizando el texto...";

@@ -74,7 +74,8 @@ Revisión actual del 01/feb/2023
 
 	<ItemGroup>
 		<PackageReference Include="Google.Cloud.Language.V1" Version="3.2.0" />
-		<!--<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />-->
+		<!-- Esto es necesario para builder.Logging.AddDebug(); en MauiProgram.cs (en Android>) -->
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
