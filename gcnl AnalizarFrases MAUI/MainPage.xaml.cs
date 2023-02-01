@@ -63,27 +63,76 @@ namespace gcnl_AnalizarFrases_MAUI
             BtnMostrar6.IsEnabled = habilitar;
         }
 
-        private void BtnAnalizar_Clicked(object sender, EventArgs e)
+        private async void BtnAnalizar_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = "";
 
             string tmp = txtTexto.Text;
             if (string.IsNullOrEmpty(tmp))
             {
+                LabelAviso.Text = "Por favor indica el texto a analizar de al menos 3 caracteres";
+                grbAviso.BackgroundColor = Colors.Firebrick;
                 grbAviso.IsVisible = true;
                 txtTexto.Focus();
                 return;
             }
-            grbAviso.IsVisible = false;
-            text = tmp;
-            frase = Frases.Add(text);
-            //txtResultado.Focus();
 
-            // Inicialmente mostrar todo
-            BtnMostrar1_Clicked(null, null);
+            text = tmp;
+            HabilitarBotones(false);
+
+            //await AnalizarTexto();
+            await Task.Run(() =>
+            {
+                LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.Text = "Analizando el texto..."; });
+                grbAviso.Dispatcher.Dispatch(() =>
+                {
+                    grbAviso.BackgroundColor = Colors.SteelBlue;
+                    grbAviso.IsVisible = true;
+                });
+                frase = Frases.Add(text);
+
+                BtnMostrar1.Dispatcher.Dispatch(() =>
+                {
+                    // Inicialmente mostrar todo
+                    BtnMostrar1_Clicked(null, null);
+                });
+                grbAviso.Dispatcher.Dispatch(() => { grbAviso.IsVisible = false; });
+            });
+            
+            //LabelAviso.Text = "Analizando el texto...";
+            //grbAviso.BackgroundColor = Colors.SteelBlue;
+            //grbAviso.IsVisible = true;
+            //text = tmp;
+            //frase = Frases.Add(text);
+            ////txtResultado.Focus();
+
+            //// Inicialmente mostrar todo
+            //BtnMostrar1_Clicked(null, null);
 
             HabilitarBotones(true);
         }
+
+        //private Task AnalizarTexto()
+        //{
+        //    var tsk = Task.Run(() => 
+        //    {
+        //        LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.Text = "Analizando el texto..."; });
+        //        grbAviso.Dispatcher.Dispatch(() =>
+        //        {
+        //            grbAviso.BackgroundColor = Colors.SteelBlue;
+        //            grbAviso.IsVisible = true;
+        //        });
+        //        frase = Frases.Add(text);
+
+        //        BtnMostrar1.Dispatcher.Dispatch(() =>
+        //        {
+        //            // Inicialmente mostrar todo
+        //            BtnMostrar1_Clicked(null, null);
+        //        });
+        //        grbAviso.Dispatcher.Dispatch(() => { grbAviso.IsVisible = false; });
+        //    });
+        //    return tsk;
+        //}
 
         private void BtnMostrar1_Clicked(object sender, EventArgs e)
         {
