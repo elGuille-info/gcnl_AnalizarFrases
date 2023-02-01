@@ -191,7 +191,8 @@ namespace gcnl_AnalizarFrases_MAUI
             sbConsole.AppendLine($"Detected language: {response.Language}");
             sbConsole.AppendLine($"Sentiment Score: {sentiment.Score}, Magnitude: {sentiment.Magnitude}");
             sbConsole.AppendLine("***Entities:");
-            Entity? entity1 = null;
+            //Entity? entity1 = null;
+            Entity entity1 = null;
             foreach (var entity in response.Entities)
             {
                 // algunos entities están repetidos y seguidos
@@ -313,7 +314,8 @@ namespace gcnl_AnalizarFrases_MAUI
             }
         }
 
-        private void MostrarTokenPartOfSpeech(Token? token)
+        //private void MostrarTokenPartOfSpeech(Token? token)
+        private void MostrarTokenPartOfSpeech(Token token)
         {
             if (token == null) return;
 

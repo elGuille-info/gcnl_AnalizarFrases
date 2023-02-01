@@ -60,6 +60,10 @@ Revisión actual del 01/feb/2023
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\key.json.readme.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Include="..\gcnl_AnalizarFrases\Frases.cs" Link="Frases.cs" />
 	</ItemGroup>
 
@@ -69,7 +73,7 @@ Revisión actual del 01/feb/2023
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="key.json">
+	  <None Update="Resources\Raw\key.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>

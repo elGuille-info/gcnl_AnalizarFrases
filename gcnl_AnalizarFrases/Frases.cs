@@ -45,6 +45,7 @@ public class Frases
 
     // Los valores static/compartidos para usar en todas las FrasesPrueba o textos analizados mientras está activo el programa.
 
+    //private static LanguageServiceClient? client;
     private static LanguageServiceClient? client;
     private static readonly List<Frases> colFrases = new();
 
@@ -68,12 +69,8 @@ public class Frases
     private string _idioma;
     private string _texto;
     private AnnotateTextResponse _response;
-    private Token? _Root;
-
-    /// <summary>
-    /// El texto completo de la frase o texto analizado.
-    /// </summary>
-    public string Texto { get { return _texto; } }
+    //private Token? _Root;
+    private Token _Root;
 
     /// <summary>
     /// Constructor privado.
@@ -84,10 +81,9 @@ public class Frases
         _texto = text;
 
         // En la aplicación para .NET MAUI espera que key.json esté en C:\Windows\System32 (01/feb/23 09.26)
-        if (client == null)
-        {
-            client = LanguageServiceClient.Create();
-        }
+        //if (client == null) { client = LanguageServiceClient.Create(); }
+        client ??= LanguageServiceClient.Create();
+
         var document = Document.FromPlainText(text);
 
         try
@@ -120,15 +116,19 @@ public class Frases
         else _sentimiento = Sentimientos.Neutro;
         _idioma = _response.Language;
 
-        _Root = _response.Tokens.FirstOrDefault((t) => t.DependencyEdge.Label == DependencyEdge.Types.Label.Root);
+        //_Root = _response.Tokens.FirstOrDefault((t) => t.DependencyEdge.Label == DependencyEdge.Types.Label.Root);
         // Este caso NUNCA debe darse
-        if (_Root == null)
-        {
-            _Root = _response.Tokens[0];
-        }
+        //if (_Root == null) { _Root = _response.Tokens[0]; }
+        var elRoot = _response.Tokens.FirstOrDefault((t) => t.DependencyEdge.Label == DependencyEdge.Types.Label.Root);
+        _Root = elRoot ?? _response.Tokens[0];
 
         Analizar();
     }
+
+    /// <summary>
+    /// El texto completo de la frase o texto analizado.
+    /// </summary>
+    public string Texto { get { return _texto; } }
 
     /// <summary>
     /// El contenido de esta frase.
@@ -415,7 +415,6 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
     /// <summary>
     /// Clase para cada grupo de palabras relacionadas con el Root.
     /// </summary>
-    /// <remarks>Una vez creada la colección recorrerla y llamar a RestablecerValores.</remarks>
     public class Relacion : IComparable<Relacion>
     {
         private List<MiToken> _misTokens = new();
@@ -490,7 +489,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
                 if (i == 0 || i == ordenados.Count - 1)
                 {
                     if (elToken.Token.DependencyEdge.Label == DependencyEdge.Types.Label.P &&
-                        "¿?¡!()[]{}".Contains(elToken.Token.Text.Content, StringComparison.CurrentCulture) == false) 
+                        "¿?¡!()[]{}".Contains(elToken.Token.Text.Content) == false) 
                     {
                         continue;
                     }
@@ -505,7 +504,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
                         if (ordenados[i + 1].Token.DependencyEdge.Label == DependencyEdge.Types.Label.P)
                         {
                             // no añadir el espacio si empieza por uno de estos signos
-                            if ("¿¡([{".IndexOf(ordenados[i + 1].Token.Text.Content) == -1)
+                            if ("¿¡([{".Contains(ordenados[i + 1].Token.Text.Content) == false)
                                 continue;
                         }
                     }
@@ -514,7 +513,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
 
                 // añadir espacio si es un signo de puntuación y el siguiente no es un signo de puntuación
                 // salvo si son signos que no se deben separar
-                if ("¿?¡!()[]{}".IndexOf(elToken.Token.Text.Content) == -1)
+                if ("¿?¡!()[]{}".Contains(elToken.Token.Text.Content) == false)
                 {
                     if (elToken.Token.DependencyEdge.Label == DependencyEdge.Types.Label.P)
                     {
