@@ -397,6 +397,301 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
     // Utilizo los métodos actuales de MainPage que asigna la salida a un StringBuilder.
     //
 
+    /// <summary>
+    /// Mostrar un resumen de los textos analizados.
+    /// </summary>
+    /// <param name="LasFrases">Colección con los textos analizados.</param>
+    /// <param name="ultima">True para mostrar la última analizada, false para mostrarlas todas.</param>
+    /// <returns>Una cadena con el resultado a mostrar.</returns>
+    public static string MostrarResumen(List<Frases> LasFrases, bool ultima)
+    {
+        StringBuilder sbConsole = new();
+        if (ultima)
+        {
+            sbConsole.AppendLine("Última frase analizada:");
+            var i = LasFrases.Count - 1;
+            var frase = LasFrases[i];
+            sbConsole.AppendLine($"Texto: '{frase.Texto}'");
+            sbConsole.AppendLine($"Root: '{frase.Root?.Text.Content}', Lemma: '{frase.Root?.Lemma}'");
+            sbConsole.Append("  ");
+            sbConsole.Append(MostrarTokenPartOfSpeech(frase.Root));
+            sbConsole.AppendLine($"Sentimiento: {frase.Sentimiento} ({frase.SentimientoScore}), absoluto: {frase.SentimientoAbsoluto}");
+            sbConsole.AppendLine($"Entidades:");
+            foreach (var entidad in frase.Entidades)
+            {
+                sbConsole.AppendLine($"  {entidad}");
+            }
+            sbConsole.AppendLine($"Relaciones:");
+            foreach (var relacion in frase.Relaciones)
+            {
+                sbConsole.AppendLine($"  {relacion}");
+            }
+            return sbConsole.ToString();
+        }
+        sbConsole.AppendLine($"Frases analizadas: {LasFrases.Count}");
+        for (int i = 0; i < LasFrases.Count; i++)
+        {
+            var frase = LasFrases[i];
+            sbConsole.AppendLine($"{i + 1,4}- Texto: '{frase.Texto}'");
+            sbConsole.AppendLine($"      Root: '{frase.Root?.Text.Content}', Lemma: '{frase.Root?.Lemma}'");
+            sbConsole.Append("        ");
+            sbConsole.Append(MostrarTokenPartOfSpeech(frase.Root));
+            sbConsole.AppendLine($"      Sentimiento: {frase.Sentimiento} ({frase.SentimientoScore}), absoluto: {frase.SentimientoAbsoluto}");
+            sbConsole.AppendLine($"      Entidades:");
+            foreach (var entidad in frase.Entidades)
+            {
+                sbConsole.AppendLine($"        {entidad}");
+            }
+            sbConsole.AppendLine($"      Relaciones:");
+            foreach (var relacion in frase.Relaciones)
+            {
+                sbConsole.AppendLine($"        {relacion}");
+            }
+        }
+        return sbConsole.ToString();
+    }
+
+    /// <summary>
+    /// Mostrar los detalles del texto analizado.
+    /// </summary>
+    /// <param name="conTokens">True para mostrar los tokens.</param>
+    /// <param name="soloEntities">True para mostrar solo el contenido de Entities.</param>
+    /// <returns>Una cadena con el resultado analizado.</returns>
+    public string Analizar(bool conTokens, bool soloEntities)
+    {
+        var response = this.Response;
+        var sentiment = response.DocumentSentiment;
+        StringBuilder sbConsole = new();
+
+        sbConsole.AppendLine($"Detected language: {response.Language}");
+        sbConsole.AppendLine($"Sentiment Score: {sentiment.Score}, Magnitude: {sentiment.Magnitude}");
+        sbConsole.AppendLine("***Entities:");
+        Entity? entity1 = null;
+        //Entity entity1 = null;
+        foreach (var entity in response.Entities)
+        {
+            // algunos entities están repetidos y seguidos
+            if (entity1 == null)
+            {
+                entity1 = entity;
+            }
+            else
+            {
+                if (entity == entity1) continue;
+            }
+            // Si se piden solo entidades y el valor de Salience es 0,
+            // no mostrarlo si solo tiene una palabra
+            if (soloEntities && entity.Salience == 0.0F && entity.Name.Contains(' ') == false) continue; // return;
+
+            sbConsole.AppendLine($"Entity .Name: '{entity.Name}'");
+            sbConsole.AppendLine($"  Type: {entity.Type},  Salience: {(int)(entity.Salience * 100)}%");
+            if (entity.Mentions.Count > 0)
+            {
+                sbConsole.AppendLine($"  Mentions: {entity.Mentions.Count}");
+                foreach (var mention in entity.Mentions)
+                {
+                    sbConsole.Append($"    Text: '{mention.Text.Content}' (beginOffset: {mention.Text.BeginOffset}),");
+                    sbConsole.AppendLine($" Type: {mention.Type}, Sentiment: {mention.Sentiment}");
+                }
+            }
+            if (entity.Metadata.Count > 0)
+            {
+                sbConsole.AppendLine($"  Metadata: {entity.Metadata}");
+                if (entity.Metadata.ContainsKey("wikipedia_url"))
+                {
+                    sbConsole.AppendLine($"    URL: {entity.Metadata["wikipedia_url"]}");
+                }
+            }
+        }
+        if (soloEntities) return sbConsole.ToString();
+
+        // Las categorías solo funcionan con ClassifyText y solo en inglés
+        sbConsole.AppendLine("***Categories:");
+        foreach (var cat in response.Categories)
+        {
+            sbConsole.AppendLine($"Category: '{cat.Name}' (Confidence: {cat.Confidence})");
+        }
+        sbConsole.AppendLine("***Sentences:");
+        foreach (var sentence in response.Sentences)
+        {
+            sbConsole.AppendLine($" Sentence.Text.Content: '{sentence.Text.Content}'");
+            sbConsole.AppendLine($"   Sentence.Text.BeginOffset: {sentence.Text.BeginOffset}");
+            sbConsole.AppendLine($" Sentence.Sentiment .Magnitude: {sentence.Sentiment.Magnitude}, .Score: {sentence.Sentiment.Score}");
+        }
+        if (conTokens)
+        {
+            sbConsole.AppendLine("***Tokens:");
+            for (int i = 0; i < response.Tokens.Count; i++)
+            {
+                sbConsole.Append(MostrarToken(i, response.Tokens, conContenido: false));
+            }
+        }
+        return sbConsole.ToString();
+    }
+
+    /*
+    index = 0
+      for sentence in self.sentences:
+        content  = sentence['text']['content']
+        sentence_begin = sentence['text']['beginOffset']
+        sentence_end = sentence_begin + len(content) - 1
+        while index < len(self.tokens) and self.tokens[index]['text']['beginOffset'] <= sentence_end:
+          # This token is in this sentence
+          index += 1
+    */
+    //public string MostrarTokens(AnnotateTextResponse self)
+    
+    /// <summary>
+    /// Mostrar todos los tokens incluyendo las partes que no tienen contenido.
+    /// </summary>
+    /// <returns>Una cadena con el resultado a mostrar.</returns>
+    public string MostrarTokens()
+    {
+        AnnotateTextResponse self = Response;
+        StringBuilder sbConsole = new();
+        int index = 0;
+        foreach (var sentence in self.Sentences)
+        {
+            var content = sentence.Text.Content;
+            var sentence_begin = sentence.Text.BeginOffset;
+            var sentence_end = sentence_begin + content.Length - 1;
+            while (index < self.Tokens.Count && self.Tokens[index].Text.BeginOffset <= sentence_end)
+            {
+                //# This token is in this sentence
+                sbConsole.Append(MostrarToken(index, self.Tokens, conContenido: true));
+
+                index += 1;
+            }
+        }
+        return sbConsole.ToString();
+    }
+
+    /// <summary>
+    /// Mostrar información del índice indicado de la colección de tokens.
+    /// </summary>
+    /// <param name="nToken">El índice del token a mostrar.</param>
+    /// <param name="tokens">Colección con los tokens.</param>
+    /// <param name="conContenido">True para mostrar solo las partes con contenido, false para mostrar todo, tenga o no contenido.</param>
+    /// <returns>Una cadena con la información del token indicado.</returns>
+    private string MostrarToken(int nToken, RepeatedField<Token> tokens, bool conContenido)
+    {
+        StringBuilder sbConsole = new();
+        Token token = tokens[nToken];
+        sbConsole.AppendLine($"{nToken}- Token: Text.Content: '{token.Text.Content}' (Text.BeginOffset: {token.Text.BeginOffset}), Lemma: '{token.Lemma}'");
+        if (token.DependencyEdge.Label == DependencyEdge.Types.Label.Root)
+        {
+            sbConsole.Append($"  **DependencyEdge Label: {token.DependencyEdge.Label}");
+            sbConsole.Append($", HeadTokenIndex: {token.DependencyEdge.HeadTokenIndex}");
+            sbConsole.AppendLine("**");
+        }
+        else
+        {
+            sbConsole.Append($"  DependencyEdge Label: {token.DependencyEdge.Label}, HeadTokenIndex: {token.DependencyEdge.HeadTokenIndex}");
+            var tokenDependency = tokens[token.DependencyEdge.HeadTokenIndex];
+            sbConsole.AppendLine($" ('{tokenDependency.Text.Content}')");
+        }
+        if (conContenido)
+        {
+            //sbConsole.AppendLine($"  PartOfSpeech:");
+            //sbConsole.Append($"    ");
+            sbConsole.Append($"  PartOfSpeech: ");
+            sbConsole.Append(MostrarTokenPartOfSpeech(token));
+        }
+        else
+        {
+            sbConsole.AppendLine($"  PartOfSpeech Aspect: {token.PartOfSpeech.Aspect}, Case: {token.PartOfSpeech.Case}, Form: {token.PartOfSpeech.Form}");
+            sbConsole.AppendLine($"  PartOfSpeech Gender: {token.PartOfSpeech.Gender}, Mood: {token.PartOfSpeech.Mood}, Number: {token.PartOfSpeech.Number}");
+            sbConsole.AppendLine($"  PartOfSpeech Person: {token.PartOfSpeech.Person}, Proper: {token.PartOfSpeech.Proper}");
+            sbConsole.AppendLine($"  PartOfSpeech Reciprocity: {token.PartOfSpeech.Reciprocity}, Tag: {token.PartOfSpeech.Tag}");
+            sbConsole.AppendLine($"  PartOfSpeech Tense:: {token.PartOfSpeech.Tense}, Voice: {token.PartOfSpeech.Voice}");
+        }
+        return sbConsole.ToString();
+    }
+
+    /// <summary>
+    /// Mostrar la parte de PartOfSpeech del token indicado.
+    /// </summary>
+    /// <param name="token">El token del que queremos la información de PartOfSpeech.</param>
+    /// <returns>Una cadena con la información.</returns>
+    private static string MostrarTokenPartOfSpeech(Token? token)
+    {
+        if (token == null) return "";
+
+        StringBuilder sbConsole = new();
+
+        sbConsole.Append($"Tag: {token.PartOfSpeech.Tag},");
+        var sb = new StringBuilder();
+        // Si tiene Aspect, puede tener Case y Form
+        if (token.PartOfSpeech.Aspect != PartOfSpeech.Types.Aspect.Unknown)
+        {
+            sb.Append($" (Aspect: {token.PartOfSpeech.Aspect},");
+            if (token.PartOfSpeech.Case != PartOfSpeech.Types.Case.Unknown)
+            {
+                sb.Append($" Case: {token.PartOfSpeech.Case},");
+            }
+            if (token.PartOfSpeech.Form != PartOfSpeech.Types.Form.Unknown)
+            {
+                sb.Append($" Form: {token.PartOfSpeech.Form},");
+            }
+            if (sb.ToString().EndsWith(','))
+            {
+                sb.Length -= 1;
+            }
+            sb.Append("),");
+        }
+
+        // Si tiene Gender, puede tener Mood y Number
+        if (token.PartOfSpeech.Gender != PartOfSpeech.Types.Gender.Unknown)
+        {
+            sb.Append($" (Gender: {token.PartOfSpeech.Gender},");
+            if (token.PartOfSpeech.Mood != PartOfSpeech.Types.Mood.Unknown)
+            {
+                sb.Append($" Mood: {token.PartOfSpeech.Mood},");
+            }
+            if (token.PartOfSpeech.Number != PartOfSpeech.Types.Number.Unknown)
+            {
+                sb.Append($" Number: {token.PartOfSpeech.Number},");
+            }
+            if (sb.ToString().EndsWith(','))
+            {
+                sb.Length -= 1;
+            }
+            sb.Append("),");
+        }
+
+        if (token.PartOfSpeech.Proper != PartOfSpeech.Types.Proper.Unknown)
+        {
+            sb.Append($" Proper: {token.PartOfSpeech.Proper},");
+        }
+
+        if (token.PartOfSpeech.Person != PartOfSpeech.Types.Person.Unknown)
+        {
+            sb.Append($" Person: {token.PartOfSpeech.Person},");
+        }
+        if (token.PartOfSpeech.Reciprocity != PartOfSpeech.Types.Reciprocity.Unknown)
+        {
+            sb.Append($" Reciprocity: {token.PartOfSpeech.Reciprocity},");
+        }
+        if (token.PartOfSpeech.Tense != PartOfSpeech.Types.Tense.Unknown)
+        {
+            sb.Append($" Tense: {token.PartOfSpeech.Tense},");
+        }
+        if (token.PartOfSpeech.Voice != PartOfSpeech.Types.Voice.Unknown)
+        {
+            sb.Append($" Voice: {token.PartOfSpeech.Voice}");
+        }
+
+        if (sb.ToString().Trim().Length > 0)
+        {
+            sbConsole.AppendLine(sb.ToString().TrimEnd(','));
+        }
+        else
+        {
+            sbConsole.AppendLine();
+        }
+        return sbConsole.ToString();
+    }
+
 
     /// <summary>
     /// Clase que extiende (pero no hereda) la clase Token asignando el índice dentro de la frase.

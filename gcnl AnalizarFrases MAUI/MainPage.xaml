@@ -52,10 +52,10 @@
             <StackLayout>
                 <ScrollView Orientation="Horizontal">
                     <StackLayout x:Name="grbMostrar" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
-                        <Button x:Name="BtnMostrar1" Text="Mostrar todo" Clicked="BtnMostrar1_Clicked"/>
-                        <Button x:Name="BtnMostrar2" Text="Mostrar sin tokens" Clicked="BtnMostrar2_Clicked"/>
-                        <Button x:Name="BtnMostrar3" Text="Tokens" Clicked="BtnMostrar3_Clicked"/>
-                        <Button x:Name="BtnMostrar4" Text="Entities" Clicked="BtnMostrar4_Clicked"/>
+                        <Button x:Name="BtnMostrar1" Text="Todo con tokens" Clicked="BtnMostrar1_Clicked"/>
+                        <Button x:Name="BtnMostrar2" Text="Todo sin tokens" Clicked="BtnMostrar2_Clicked"/>
+                        <Button x:Name="BtnMostrar3" Text="Solo tokens" Clicked="BtnMostrar3_Clicked"/>
+                        <Button x:Name="BtnMostrar4" Text="Solo entities" Clicked="BtnMostrar4_Clicked"/>
                         <Button x:Name="BtnMostrar5" Text="Resumen última" Clicked="BtnMostrar5_Clicked"/>
                         <Button x:Name="BtnMostrar6" Text="Resumen todas" Clicked="BtnMostrar6_Clicked"/>
                     </StackLayout>
@@ -68,7 +68,11 @@
             </StackLayout>
             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
                 <Label x:Name="LabelStatus" Text="" FontSize="13"
-                       VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged"/>
+                       VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
