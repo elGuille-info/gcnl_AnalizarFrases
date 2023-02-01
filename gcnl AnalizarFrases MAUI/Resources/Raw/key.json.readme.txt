@@ -14,7 +14,7 @@ El código usado es el siguiente:
 /// Copia el fichero key.json de la carpeta Resources\Raw a LocalApplicationData.
 /// </summary>
 /// <remarks>En este método se asigna la variable de entorno GOOGLE_APPLICATION_CREDENTIALS con el path de key.json</remarks>
-static async void CopiarGoogleCredentials()
+async void CopiarGoogleCredentials()
 {
     using var stream = await FileSystem.OpenAppPackageFileAsync("key.json");
     using var reader = new StreamReader(stream);
