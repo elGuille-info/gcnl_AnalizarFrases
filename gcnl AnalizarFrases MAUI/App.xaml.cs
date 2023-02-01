@@ -11,7 +11,10 @@ namespace gcnl_AnalizarFrases_MAUI
             InitializeComponent();
 
             // Copiar el fichero key.json en LocalApplicationData
+            // En iPhone no llega aquí
             CopiarGoogleCredentials();
+
+            var env = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
 
             MainPage = new AppShell();
         }
@@ -20,7 +23,7 @@ namespace gcnl_AnalizarFrases_MAUI
         /// Copia el fichero key.json de la carpeta Resources\Raw a LocalApplicationData.
         /// </summary>
         /// <remarks>En este método se asigna la variable de entorno GOOGLE_APPLICATION_CREDENTIALS con el path de key.json</remarks>
-        static async void CopiarGoogleCredentials()
+        async void CopiarGoogleCredentials()
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("key.json");
             using var reader = new StreamReader(stream);

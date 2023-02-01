@@ -41,6 +41,11 @@ Revisión actual del 01/feb/2023
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+	  <CodesignKey>Apple Development: Created via API (4SX49RMF23)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -69,7 +74,7 @@ Revisión actual del 01/feb/2023
 
 	<ItemGroup>
 		<PackageReference Include="Google.Cloud.Language.V1" Version="3.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<!--<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />-->
 	</ItemGroup>
 
 	<ItemGroup>
