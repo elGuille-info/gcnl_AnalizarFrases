@@ -27,8 +27,8 @@ namespace gcnl_AnalizarFrases_MAUI
                 // Asignar manualmente el tamaño. 
                 // Según mis cálculos, el tamaño mostrado por Width y Height de la ventana principal
                 // Es 15 menos del ancho aquí indicado y ~57 menos del alto indicado
-                int winWidth = 830+15; // 830; // 1200; // 1700; // 2800;
-                int winHeight = 825+57; // 825; // 865; // 1600; //1800
+                int winWidth = 935+15; // 830+15; // 830; // 1200; // 1700; // 2800;
+                int winHeight = 1070+57; //995+57; // 835+57; // 825; // 865; // 1600; //1800
 
                 var mauiWindow = handler.VirtualView;
                 var nativeWindow = handler.PlatformView;
@@ -56,16 +56,16 @@ namespace gcnl_AnalizarFrases_MAUI
                     // El tamaño de la pantalla de este equipo.
                     int screenW = (int)(disp.Width / disp.Density);
                     int screenH = (int)(disp.Height / disp.Density);
-                    // Si el alto indicado es mayor, ponerlo para que entre en esta pantalla.
-                    if (winHeight > screenH)
-                    {
-                        winHeight = screenH - 60;
-                    }
-                    // Si el ancho indicado es mayor, ponerlo para que entre en esta pantalla.
-                    if (winWidth > screenW)
-                    {
-                        winWidth = screenW - 60;
-                    }
+                    //// Si el alto indicado es mayor, ponerlo para que entre en esta pantalla.
+                    //if (winHeight > screenH)
+                    //{
+                    //    winHeight = screenH - 60;
+                    //}
+                    //// Si el ancho indicado es mayor, ponerlo para que entre en esta pantalla.
+                    //if (winWidth > screenW)
+                    //{
+                    //    winWidth = screenW - 60;
+                    //}
                     appWindow.Resize(new Windows.Graphics.SizeInt32(winWidth, winHeight));
                     x = (screenW - winWidth) / 2;
                     if (x < 0) 
