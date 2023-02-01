@@ -388,6 +388,16 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
 { Texto: '¿crees que aguantaré?', Relevancia: 0, Token: crees, HeadTokenIndex: 4, Tokens: 5 }
     */
 
+    //
+    // Los métodos para "mostrar" el texto analizado.
+    // Antes estaban como métodos en
+    //  Program.cs (mostrando en la consola) y en
+    //  MainPage.xaml.cs asignando el resultado en la caja de textos.
+    //
+    // Utilizo los métodos actuales de MainPage que asigna la salida a un StringBuilder.
+    //
+
+
     /// <summary>
     /// Clase que extiende (pero no hereda) la clase Token asignando el índice dentro de la frase.
     /// </summary>
