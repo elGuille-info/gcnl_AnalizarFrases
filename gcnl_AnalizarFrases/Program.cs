@@ -277,11 +277,6 @@ class Program
         }
     }
 
-    //static void MostrarTokens(Frases frase)
-    //{
-    //    MostrarTokens(frase.Response);
-    //}
-
     /*
     index = 0
       for sentence in self.sentences:

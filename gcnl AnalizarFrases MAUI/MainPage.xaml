@@ -4,18 +4,22 @@
              x:Class="gcnl_AnalizarFrases_MAUI.MainPage"
              Appearing="ContentPage_Appearing"
              Title="Analizar frases usando Cloud Natural Language">
+    <!--<ContentPage.Resources>
+        <Style x:Key="EntryText" TargetType="{x:Type Entry}">
+            <Setter Property="Keyboard" Value="Text"/>
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+    </ContentPage.Resources>-->
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
-            <StackLayout BackgroundColor="SteelBlue" Padding="6">
+            <!--<StackLayout BackgroundColor="SteelBlue" Padding="6">
                 <Label Text="Analizar frases con Google Cloud Natural Language"
                        FontSize="Title" FontAttributes="Bold" 
                        TextColor="White"
                        HorizontalOptions="Center" />
-            </StackLayout>
+            </StackLayout>-->
             <Frame>
-                <StackLayout >
-                    <Label Text="Selecciona o indica el texto a analizar:"/>
-                    <Label />
+                <StackLayout Spacing="8">
                     <StackLayout>
                         <ListView x:Name="listViewFrases" HeightRequest="300"
                                   BackgroundColor="WhiteSmoke"
@@ -31,14 +35,36 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                    <Label />
+                    <Label Text="Selecciona o indica el texto a analizar:"/>
                     <StackLayout Orientation="Horizontal" Spacing="8" Margin="0">
-                        <Label Text="Texto:"/>
-                        <Entry x:Name="txtTexto" HorizontalOptions="FillAndExpand" />
+                        <Label Text="Texto:" WidthRequest="80"/>
+                        <Entry x:Name="txtTexto" FontFamily="Consolas"
+                               HorizontalOptions="FillAndExpand" />
                     </StackLayout>
-
+                    <Button x:Name="BtnAnalizar" 
+                            Text="Analizar texto" Clicked="BtnAnalizar_Clicked"/>
+                    <StackLayout x:Name="grbAviso" Orientation="Horizontal" 
+                                 BackgroundColor="Firebrick"
+                                 Padding="3" IsVisible="False">
+                        <Label x:Name="LabelAviso" Text="Por favor indica el texto a analizar de al menos 3 caracteres" />
+                    </StackLayout>
                 </StackLayout>
             </Frame>
+            <StackLayout>
+                <StackLayout x:Name="grbMostrar" Orientation="Horizontal" Spacing="8">
+                    <Button x:Name="BtnMostrar1" Text="Mostrar todo" Clicked="BtnMostrar1_Clicked"/>
+                    <Button x:Name="BtnMostrar2" Text="Mostrar sin tokens" Clicked="BtnMostrar2_Clicked"/>
+                    <Button x:Name="BtnMostrar3" Text="Tokens" Clicked="BtnMostrar3_Clicked"/>
+                    <Button x:Name="BtnMostrar4" Text="Entities" Clicked="BtnMostrar4_Clicked"/>
+                    <Button x:Name="BtnMostrar5" Text="Resumen última" Clicked="BtnMostrar5_Clicked"/>
+                    <Button x:Name="BtnMostrar6" Text="Resumen todas" Clicked="BtnMostrar6_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="500">
+                <Editor x:Name="txtResultado" Text="" FontFamily="Consolas"
+                        MinimumHeightRequest="500"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 

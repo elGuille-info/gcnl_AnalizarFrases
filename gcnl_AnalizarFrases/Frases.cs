@@ -1,6 +1,6 @@
 ﻿//-------------------------------------------------------------------------------
 // Frases                                                       (29/ene/23 12.08)
-// Para contener las frases (response) del texto analizado.
+// Para contener las FrasesPrueba (response) del texto analizado.
 //
 // Usando Google Cloud Natural Language API
 //
@@ -43,13 +43,13 @@ public class Frases
         Positivo = 1
     }
 
-    // Los valores static/compartidos para usar en todas las frases o textos analizados mientras está activo el programa.
+    // Los valores static/compartidos para usar en todas las FrasesPrueba o textos analizados mientras está activo el programa.
 
     private static LanguageServiceClient? client;
     private static readonly List<Frases> colFrases = new();
 
     /// <summary>
-    /// Colección con todas las frases/textos analizados.
+    /// Colección con todas las FrasesPrueba/textos analizados.
     /// </summary>
     /// <remarks>Una frase puede contener más de una sentencia si está separada con un punto.</remarks>
     public static List<Frases> LasFrases { get { return colFrases; } }
@@ -83,6 +83,7 @@ public class Frases
     {
         _texto = text;
 
+        // En la aplicación para .NET MAUI espera que key.json esté en C:\Windows\System32 (01/feb/23 09.26)
         if (client == null)
         {
             client = LanguageServiceClient.Create();
@@ -186,7 +187,7 @@ public class Frases
 
     private List<Relacion> colRelaciones = new();
     /// <summary>
-    /// Las relaciones, frases con más importancia, según Entities.
+    /// Las relaciones, FrasesPrueba con más importancia, según Entities.
     /// </summary>
     public List<Relacion> Relaciones { get { return colRelaciones; } }
 
