@@ -2,6 +2,8 @@
 using Android.Content.PM;
 using Android.OS;
 
+using Microsoft.Maui;
+
 namespace gcnl_AnalizarFrases_MAUI
 {
     [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]

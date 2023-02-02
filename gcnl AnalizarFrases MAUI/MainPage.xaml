@@ -60,7 +60,7 @@
                         MinimumHeightRequest="500"
                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             </StackLayout>
-            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="{OnPlatform WinUI=True, Default=False}">
                 <Label x:Name="LabelStatus" Text="" FontSize="13"
                        VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged">
                     <Label.GestureRecognizers>
