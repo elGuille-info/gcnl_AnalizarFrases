@@ -28,3 +28,11 @@ Una aplicación para .NET MAUI donde se usa directamente la clase Frases (no fun
 > Lee el fichero key.json.readme.txt donde indico lo que se hace para que esté accesible en todos los dispositivos.<br>
 > <br>
 > [Aquí te explico cómo crear el fichero **key.json**](https://github.com/elGuille-info/CloudNaturalLanguage) para que puedas usar las API de Google Cloud Natural Language.<br>
+
+<br>
+
+## Capturas
+
+![La versión de Windows usando el expander simulado](https://www.elguillemola.com/img/img2023/analizarFrases_windows_expander.png)
+
+<br>
