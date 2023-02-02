@@ -17,8 +17,11 @@ namespace gcnl_AnalizarFrases_MAUI
         // Lo dejo porque con este código no se ve el cambio de tamaño de la ventana.
         // Aunque en realidad solo funcionará con Windows, en Android no tiene efecto,
         // así que... lo dejo solo para Windows.
+        //
+        // Basado en: https://es.askxammy.com/manejo-de-tamano-y-posicion-de-ventanas-en-net-maui/
+        // https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/windows?view=net-maui-7.0
+        //
 #if WINDOWS
-        // Fuente: https://es.askxammy.com/manejo-de-tamano-y-posicion-de-ventanas-en-net-maui/
         protected override Window CreateWindow(IActivationState activationState)
         {
             //return base.CreateWindow(activationState);
@@ -31,11 +34,13 @@ namespace gcnl_AnalizarFrases_MAUI
 
             // Add here your positioning code
 
-            //DisplayInfo disp = DeviceDisplay.Current.MainDisplayInfo;
-            //window.X = (disp.Width / disp.Density - window.Width * disp.Density) / 2;
-            //window.Y = (disp.Height / disp.Density - window.Height * disp.Density) / 2;
+            DisplayInfo disp = DeviceDisplay.Current.MainDisplayInfo;
+            window.X = (disp.Width / disp.Density - window.Width * disp.Density) / 2;
+            window.Y = (disp.Height / disp.Density - window.Height * disp.Density) / 2;
 
             window.Title = Titulo;
+
+            // En realidad este es código específico para Windows.
 
             // Cambiar el color de la barra de Windows
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
@@ -55,6 +60,7 @@ namespace gcnl_AnalizarFrases_MAUI
                     window.TitleBar.ForegroundColor = Microsoft.UI.Colors.White;
                 });
             });
+
             return window;
         }
 #endif

@@ -72,7 +72,7 @@ namespace gcnl_AnalizarFrases_MAUI
                 MostrarAviso("Analizando el texto...", esError: false);
                 frase = Frases.Add(text);
 
-                BtnMostrar1.Dispatcher.Dispatch(() =>
+                BtnMostrar2.Dispatcher.Dispatch(() =>
                 {
                     // Inicialmente mostrar todo sin tokens
                     BtnMostrar2_Clicked(null, null);
