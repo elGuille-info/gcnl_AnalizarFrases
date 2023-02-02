@@ -125,31 +125,38 @@ namespace gcnl_AnalizarFrases_MAUI
         private void BtnMostrar1_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = frase.Analizar(conTokens: true, soloEntities: false);
+            // Mostrar el texto desde el principio
+            txtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar2_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = frase.Analizar(conTokens: false, soloEntities: false);
+            txtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar3_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = frase.MostrarTokens();
+            txtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar4_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = frase.Analizar(conTokens: false, soloEntities: true);
+            txtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar5_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = Frases.MostrarResumen(true);
+            txtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar6_Clicked(object sender, EventArgs e)
         {
             txtResultado.Text = Frases.MostrarResumen(false);
+            txtResultado.CursorPosition = 0;
         }
 
         private void listViewFrases_ItemSelected(object sender, SelectedItemChangedEventArgs e)
