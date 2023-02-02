@@ -44,3 +44,6 @@ En este post te cuento algunas de las cosas a destacar (o trucos) del proyecto p
 ![La versión de Windows usando el expander simulado](https://www.elguillemola.com/img/img2023/analizarFrases_windows_expander.png)
 
 <br>
+
+Salvo que encuentre algo importante que cambiar, estos proyectos los dejo como finalizados.<br>
+Guillermo Som (Guille), 2 de febrero de 2023, 20:01
