@@ -18,7 +18,7 @@
     </ContentPage.Resources>
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
-            <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, 
+            <!-- Con un margin mínimo de 2 en el StackLayout que está después del Frame
                  se evita que se corte el borde del Frame en la pate inferior -->
             <Frame Padding="6" Margin="0">
                 <StackLayout Margin="2">
@@ -82,19 +82,18 @@
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
-            <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand">
-                <Editor x:Name="txtResultado" Text="" FontFamily="Consolas"
-                        MinimumHeightRequest="500"
-                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Editor x:Name="txtResultado" Text="" VerticalOptions="FillAndExpand"
+                        FontFamily="Consolas" MinimumHeightRequest="600" />
             </StackLayout>
-            <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="{OnPlatform WinUI=True, Default=False}">
+            <!--<StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="{OnPlatform WinUI=True, Default=False}">
                 <Label x:Name="LabelStatus" Text="" FontSize="13"
                        VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
-            </StackLayout>
+            </StackLayout>-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

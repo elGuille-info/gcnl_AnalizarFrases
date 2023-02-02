@@ -158,20 +158,20 @@ namespace gcnl_AnalizarFrases_MAUI
             QuitarAviso();
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-        {
-            InfoTamañoVentana();
-        }
+        //private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        //{
+        //    InfoTamañoVentana();
+        //}
 
-        private void LabelStatus_SizeChanged(object sender, EventArgs e)
-        {
-            InfoTamañoVentana();
-        }
+        //private void LabelStatus_SizeChanged(object sender, EventArgs e)
+        //{
+        //    InfoTamañoVentana();
+        //}
 
-        private void InfoTamañoVentana()
-        {
-            LabelStatus.Text = $"Width: {(int)Width}, Height: {(int)Height}";
-        }
+        //private void InfoTamañoVentana()
+        //{
+        //    LabelStatus.Text = $"Width: {(int)Width}, Height: {(int)Height}";
+        //}
 
         //
         // Para ocultar / mostrar los contenedores. (31/Oct/21 18.41)
