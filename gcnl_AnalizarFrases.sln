@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl_AnalizarFrases", "gcnl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl AnalizarFrases MAUI", "gcnl AnalizarFrases MAUI\gcnl AnalizarFrases MAUI.csproj", "{504BF0D3-3D0B-4A04-8BC2-773895BED17D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gcnl AnalizarTextos", "gcnl AnalizarTextos\gcnl AnalizarTextos.csproj", "{ACDBD738-855E-462D-A1ED-EFC65E1F711A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl AnalizarTextos", "gcnl AnalizarTextos\gcnl AnalizarTextos.csproj", "{ACDBD738-855E-462D-A1ED-EFC65E1F711A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

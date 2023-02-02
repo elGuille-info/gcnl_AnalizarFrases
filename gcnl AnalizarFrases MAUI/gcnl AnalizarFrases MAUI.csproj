@@ -70,15 +70,7 @@ Revisión actual del 02/feb/2023
 	</ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Google.Cloud.Language.V1" Version="3.2.0" />
+      <ProjectReference Include="..\gcnl AnalizarTextos\gcnl AnalizarTextos.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-	  <Compile Include="..\gcnl AnalizarTextos\Frases.cs" Link="Frases.cs" />
-	</ItemGroup>
-
-	<!--<ItemGroup>
-	  <ProjectReference Include="..\gcnl AnalizarTextos\gcnl AnalizarTextos.csproj" />
-	</ItemGroup>-->
 
 </Project>
