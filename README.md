@@ -25,4 +25,6 @@ Una aplicación para .NET MAUI donde se usa directamente la clase Frases (no fun
 > Se necesita el fichero key.json (no incluido por razones evidentes de seguridad)<br>
 > En el proyecto de consola, ese fichero debe estar en el mismo directorio que el fichero Program.cs indicando que siempre se copie en el directorio de salida.<br>
 > En el proyecto para .NET MAUI, ese fichero debe estar en el directorio Resorurces > Raw y no hace falta indicar nada en ese fichero ya que el contenido de ese directorio siempre se copia.<br>
-> Lee el fichero key.json.readme.txt donde indico lo que se hace para que esté accesible en todos los dispositivos.
+> Lee el fichero key.json.readme.txt donde indico lo que se hace para que esté accesible en todos los dispositivos.<br>
+> <br>
+> [Aquí te explico cómo crear el fichero **key.json**](https://github.com/elGuille-info/CloudNaturalLanguage) para que puedas usar las API de Google Cloud Natural Language.<br>
