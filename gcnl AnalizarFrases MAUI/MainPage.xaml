@@ -4,12 +4,6 @@
              x:Class="gcnl_AnalizarFrases_MAUI.MainPage"
              Appearing="ContentPage_Appearing"
              Title="Analizar texto usando Cloud Natural Language">
-    <!--<ContentPage.Resources>
-        <Style x:Key="EntryText" TargetType="{x:Type Entry}">
-            <Setter Property="Keyboard" Value="Text"/>
-            <Setter Property="WidthRequest" Value="150"/>
-        </Style>
-    </ContentPage.Resources>-->
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
             <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, 
