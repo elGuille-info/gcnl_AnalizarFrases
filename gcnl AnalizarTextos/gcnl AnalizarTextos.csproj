@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>gcnl_AnalizarTextos</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <Title>gcnl AnalizarTextos</Title>
+      <Description>Biblioteca de clases para analizar frases/textos usando Google Cloud Natural Language API
+Revisión actual del 02/feb/2023
+      </Description>
+      <Authors>Guillermo Som</Authors>
+      <Company>Guille</Company>
+      <Version>1.0</Version>
+      <Copyright>Guillermo Som (Guille), 2023</Copyright>
+
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Google.Cloud.Language.V1" Version="3.2.0" />
+    </ItemGroup>
+
+</Project>
