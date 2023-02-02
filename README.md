@@ -31,6 +31,12 @@ Una aplicación para .NET MAUI donde se usa directamente la clase Frases (no fun
 
 <br>
 
+## Post en elguillemola.com:
+
+[Ejemplos de Google Cloud Natural Language para consola y .NET MAUI](https://www.elguillemola.com/ejemplos-de-google-cloud-natural-language-para-consola-y-net-maui/)
+
+<br>
+
 ## Capturas
 
 ![La versión de Windows usando el expander simulado](https://www.elguillemola.com/img/img2023/analizarFrases_windows_expander.png)
