@@ -90,14 +90,14 @@
                 <Editor x:Name="txtResultado" Text="" VerticalOptions="FillAndExpand"
                         FontFamily="Consolas" MinimumHeightRequest="600" />
             </StackLayout>
-            <!--<StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="{OnPlatform WinUI=True, Default=False}">
+            <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" IsVisible="{OnPlatform WinUI=True, Default=False}">
                 <Label x:Name="LabelStatus" Text="" FontSize="13"
                        VerticalOptions="Center" SizeChanged="LabelStatus_SizeChanged">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
-            </StackLayout>-->
+            </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
