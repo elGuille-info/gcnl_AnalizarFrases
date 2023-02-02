@@ -138,11 +138,11 @@ class Program
                 }
                 else if (resText == "5")
                 {
-                    Console.WriteLine(Frases.MostrarResumen(Frases.LasFrases, true));
+                    Console.WriteLine(Frases.MostrarResumen(true));
                 }
                 else if (resText == "6")
                 {
-                    Console.WriteLine(Frases.MostrarResumen(Frases.LasFrases, false));
+                    Console.WriteLine(Frases.MostrarResumen(false));
                 }
                 else if (resText == "0")
                 {

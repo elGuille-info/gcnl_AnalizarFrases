@@ -142,12 +142,12 @@ namespace gcnl_AnalizarFrases_MAUI
 
         private void BtnMostrar5_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = Frases.MostrarResumen(Frases.LasFrases, true);
+            txtResultado.Text = Frases.MostrarResumen(true);
         }
 
         private void BtnMostrar6_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = Frases.MostrarResumen(Frases.LasFrases, false);
+            txtResultado.Text = Frases.MostrarResumen(false);
         }
 
         private void listViewFrases_ItemSelected(object sender, SelectedItemChangedEventArgs e)

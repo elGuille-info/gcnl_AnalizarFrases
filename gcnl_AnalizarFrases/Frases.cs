@@ -403,7 +403,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
     /// <param name="LasFrases">Colección con los textos analizados.</param>
     /// <param name="ultima">True para mostrar la última analizada, false para mostrarlas todas.</param>
     /// <returns>Una cadena con el resultado a mostrar.</returns>
-    public static string MostrarResumen(List<Frases> LasFrases, bool ultima)
+    public static string MostrarResumen(bool ultima)
     {
         StringBuilder sbConsole = new();
         if (ultima)
