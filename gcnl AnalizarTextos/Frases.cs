@@ -52,7 +52,7 @@ public class Frases
             "El 8 de febrero voy en bici al camino de Santiago desde Sarria ¿crees que aguantaré?",
             "El 8 de febrero voy en bici al camino de Santiago desde Sarria. ¿crees que aguantaré?",
             "Ask not what your country can do for you, ask what you can do for your country.",
-            "On February 8 I go, with Ana and her cousin, by bike to the Camino de Santiago from Sarria. Do you think I will endure with the bike?",
+            "On February 8 I will go by bike to the Camino de Santiago from Sarria. Do you think I will do it?",
             "El 8 de febrero iré en bici al camino de Santiago desde Sarria. ¿Crees que lo lograré?",
             "El 8 de febrero iré en bici al camino de Santiago desde Sarria ¿crees que lo lograré?"
         };
