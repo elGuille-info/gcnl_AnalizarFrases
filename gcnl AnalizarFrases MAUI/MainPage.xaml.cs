@@ -93,15 +93,9 @@ namespace gcnl_AnalizarFrases_MAUI
         {
             grbAviso.Dispatcher.Dispatch(() =>
             {
-                if (esError)
-                {
-                    grbAviso.BackgroundColor = Colors.Firebrick;
-                }
-                else
-                {
-                    grbAviso.BackgroundColor = Colors.SteelBlue;
-                }
+                grbAviso.BackgroundColor = esError ? Colors.Firebrick : Colors.SteelBlue;
             });
+
             LabelAviso.Dispatcher.Dispatch(() =>
             {
                 LabelAviso.Text = aviso;
