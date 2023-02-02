@@ -7,9 +7,8 @@
     <!--<ImplicitUsings>enable</ImplicitUsings>-->
     <Nullable>enable</Nullable>
       <Title>gcnl AnalizarFrases</Title>
-      <Description>
-          Analizar frases usando Google Cloud Natural Language API
-          Revisión actual del 02/feb/2023
+      <Description>Aplicación de consola para analizar frases usando Google Cloud Natural Language API
+Revisión actual del 02/feb/2023
       </Description>
       <Authors>Guillermo Som</Authors>
       <Company>Guille</Company>
