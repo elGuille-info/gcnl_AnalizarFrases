@@ -1,4 +1,10 @@
-﻿using System;
+﻿//
+// En este proyecto añado un enlace a la clase Frases,
+// ya que para poder añadir una referencia a la DLL que contiene esa clase debe estar creado el proyecto como Class Library para MAUI
+// y ese tipo de proyecto no sirve para la aplicación de consola (o no me ha funcionado).
+//
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
