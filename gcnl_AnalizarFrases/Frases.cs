@@ -400,7 +400,6 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
     /// <summary>
     /// Mostrar un resumen de los textos analizados.
     /// </summary>
-    /// <param name="LasFrases">Colección con los textos analizados.</param>
     /// <param name="ultima">True para mostrar la última analizada, false para mostrarlas todas.</param>
     /// <returns>Una cadena con el resultado a mostrar.</returns>
     public static string MostrarResumen(bool ultima)
