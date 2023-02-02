@@ -21,7 +21,7 @@ namespace gcnl_AnalizarFrases_MAUI
         public MainPage()
         {
             InitializeComponent();
-            listViewFrases.ItemsSource = Frases.FrasesPrueba;
+            ListViewFrases.ItemsSource = Frases.FrasesPrueba;
         }
 
         private Frases frase = null;
@@ -33,9 +33,9 @@ namespace gcnl_AnalizarFrases_MAUI
 
             QuitarAviso();
             // si no hay texto asignado, asignar la última frase de la lista
-            if (string.IsNullOrEmpty(txtTexto.Text))
+            if (string.IsNullOrEmpty(TxtTexto.Text))
             {
-                txtTexto.Text = Frases.FrasesPrueba[^1];
+                TxtTexto.Text = Frases.FrasesPrueba[^1];
             }
             // si frase no está asignada, deshabilitar los botones de mostrar
             bool habilitar = frase != null;
@@ -54,13 +54,13 @@ namespace gcnl_AnalizarFrases_MAUI
 
         private async void BtnAnalizar_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = "";
+            TxtResultado.Text = "";
 
-            string tmp = txtTexto.Text;
+            string tmp = TxtTexto.Text;
             if (string.IsNullOrEmpty(tmp))
             {
                 MostrarAviso("Por favor indica el texto a analizar de al menos 3 caracteres", esError: true);
-                txtTexto.Focus();
+                TxtTexto.Focus();
                 return;
             }
 
@@ -86,14 +86,14 @@ namespace gcnl_AnalizarFrases_MAUI
         private void QuitarAviso()
         {
             LabelAviso.Dispatcher.Dispatch(() => { LabelAviso.IsVisible = false; });
-            grbAviso.Dispatcher.Dispatch(() => { grbAviso.BackgroundColor = Colors.Transparent; });
+            GrbAviso.Dispatcher.Dispatch(() => { GrbAviso.BackgroundColor = Colors.Transparent; });
         }
 
         private void MostrarAviso(string aviso, bool esError)
         {
-            grbAviso.Dispatcher.Dispatch(() =>
+            GrbAviso.Dispatcher.Dispatch(() =>
             {
-                grbAviso.BackgroundColor = esError ? Colors.Firebrick : Colors.SteelBlue;
+                GrbAviso.BackgroundColor = esError ? Colors.Firebrick : Colors.SteelBlue;
             });
 
             LabelAviso.Dispatcher.Dispatch(() =>
@@ -105,48 +105,48 @@ namespace gcnl_AnalizarFrases_MAUI
 
         private void BtnMostrar1_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = frase.Analizar(conTokens: true, soloEntities: false);
+            TxtResultado.Text = frase.Analizar(conTokens: true, soloEntities: false);
             // Mostrar el texto desde el principio
-            txtResultado.CursorPosition = 0;
+            TxtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar2_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = frase.Analizar(conTokens: false, soloEntities: false);
-            txtResultado.CursorPosition = 0;
+            TxtResultado.Text = frase.Analizar(conTokens: false, soloEntities: false);
+            TxtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar3_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = frase.MostrarTokens();
-            txtResultado.CursorPosition = 0;
+            TxtResultado.Text = frase.MostrarTokens();
+            TxtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar4_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = frase.Analizar(conTokens: false, soloEntities: true);
-            txtResultado.CursorPosition = 0;
+            TxtResultado.Text = frase.Analizar(conTokens: false, soloEntities: true);
+            TxtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar5_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = Frases.MostrarResumen(true);
-            txtResultado.CursorPosition = 0;
+            TxtResultado.Text = Frases.MostrarResumen(true);
+            TxtResultado.CursorPosition = 0;
         }
 
         private void BtnMostrar6_Clicked(object sender, EventArgs e)
         {
-            txtResultado.Text = Frases.MostrarResumen(false);
-            txtResultado.CursorPosition = 0;
+            TxtResultado.Text = Frases.MostrarResumen(false);
+            TxtResultado.CursorPosition = 0;
         }
 
-        private void listViewFrases_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ListViewFrases_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (listViewFrases.SelectedItem == null)
+            if (ListViewFrases.SelectedItem == null)
                 return;
 
             ultimaOriginal = e.SelectedItem.ToString();
-            txtTexto.Text = ultimaOriginal;
+            TxtTexto.Text = ultimaOriginal;
             text = ultimaOriginal;
 
             QuitarAviso();
@@ -173,7 +173,7 @@ namespace gcnl_AnalizarFrases_MAUI
 
         private void LabelListaTextos_Tapped(object sender, EventArgs e)
         {
-            grbListaTextos.IsVisible = !grbListaTextos.IsVisible;
+            GrbListaTextos.IsVisible = !GrbListaTextos.IsVisible;
             ActualizarImagenExpander();
         }
 
@@ -182,7 +182,7 @@ namespace gcnl_AnalizarFrases_MAUI
         /// </summary>
         private void ActualizarImagenExpander()
         {
-            AsignarImagenExpander(ImgListaTextos, grbListaTextos.IsVisible, usarImagenBlanca: true);
+            AsignarImagenExpander(ImgListaTextos, GrbListaTextos.IsVisible, usarImagenBlanca: true);
         }
 
         // Para poder usar el expander simulado. (16/sep/22 03.43)
@@ -190,18 +190,18 @@ namespace gcnl_AnalizarFrases_MAUI
         /// <summary>
         /// Asignar la imagen del expander según esté expandido o no y según sea usarImagenBlanca o no.
         /// </summary>
-        /// <param name="ImgExpander">El control Image al que asignar la imagen.</param>
+        /// <param name="imgExpander">El control Image al que asignar la imagen.</param>
         /// <param name="isExpanded">Si está expandido o no.</param>
         /// <param name="usarImagenBlanca">True si se usa la imagen blanca, false si se usa la oscura.</param>
-        private static void AsignarImagenExpander(Image ImgExpander, bool isExpanded, bool usarImagenBlanca)
+        private static void AsignarImagenExpander(Image imgExpander, bool isExpanded, bool usarImagenBlanca)
         {
             // Si está expandido hay que mostrar collapse y al revés. (02/sep/22 22.11)
             string imgSource = isExpanded ? usarImagenBlanca ? "collapse_white.png" : "collapse.png" 
                                           : usarImagenBlanca ? "expand_white.png" : "expand.png";
             
-            //ImgExpander.Source = FileImageSource.FromResource($"gcnl_AnalizarFrases_MAUI.Resources.Images.{imgSource}", typeof(MainPage).Assembly);
+            //imgExpander.Source = FileImageSource.FromResource($"gcnl_AnalizarFrases_MAUI.Resources.Images.{imgSource}", typeof(MainPage).Assembly);
             // En .NET MAUI solo se indica el nombre de la imagen a usar. (02/feb/23 12.37)
-            ImgExpander.Source = imgSource;
+            imgExpander.Source = imgSource;
         }
 
     }
