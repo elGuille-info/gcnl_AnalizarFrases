@@ -16,6 +16,6 @@ Una aplicación para .NET MAUI donde se usa directamente la clase Frases (no fun
 
 > **Nota:** <br>
 > En el proyecto para .NET MAUI añado un enlace a la clase _Frases_,<br>
-> ya que para poder añadir una referencia a la DLL que contiene esa clase debe estar creado el proyecto como Class Library para MAUI<br>
+> ya que para poder añadir una referencia a la DLL que contiene esa clase debe estar creado el proyecto como Class Library para MAUI
 > y ese tipo de proyecto no sirve para la aplicación de consola (o no me ha funcionado).
 
