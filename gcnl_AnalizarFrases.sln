@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl_AnalizarFrases", "gcnl_AnalizarFrases\gcnl_AnalizarFrases.csproj", "{FF2D9956-8A30-4F3A-96FC-F6DA017EE87B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gcnl AnalizarFrases MAUI", "gcnl AnalizarFrases MAUI\gcnl AnalizarFrases MAUI.csproj", "{504BF0D3-3D0B-4A04-8BC2-773895BED17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gcnl AnalizarFrases MAUI", "gcnl AnalizarFrases MAUI\gcnl AnalizarFrases MAUI.csproj", "{504BF0D3-3D0B-4A04-8BC2-773895BED17D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gcnl AnalizarTextos", "gcnl AnalizarTextos\gcnl AnalizarTextos.csproj", "{ACDBD738-855E-462D-A1ED-EFC65E1F711A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{504BF0D3-3D0B-4A04-8BC2-773895BED17D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ACDBD738-855E-462D-A1ED-EFC65E1F711A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDBD738-855E-462D-A1ED-EFC65E1F711A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDBD738-855E-462D-A1ED-EFC65E1F711A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDBD738-855E-462D-A1ED-EFC65E1F711A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

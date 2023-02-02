@@ -11,12 +11,14 @@
 using System;
 using System.Collections.Generic;
 //using System.Runtime.CompilerServices;
-using System.Text;
+//using System.Text;
 
-using Google.Cloud.Language.V1;
-using Google.Protobuf.Collections;
+//using Google.Cloud.Language.V1;
+//using Google.Protobuf.Collections;
 //using Google.Protobuf.Collections;
 //using static Google.Cloud.Language.V1.AnnotateTextRequest.Types;
+
+using gcnl_AnalizarTextos;
 
 namespace gcnl_AnalizarFrases;
 
