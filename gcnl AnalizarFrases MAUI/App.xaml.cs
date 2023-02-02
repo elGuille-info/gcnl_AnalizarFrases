@@ -33,7 +33,7 @@ namespace gcnl_AnalizarFrases_MAUI
                 // Según mis cálculos, el tamaño mostrado por Width y Height de la ventana principal
                 // Es 15 menos del ancho aquí indicado y ~57 menos del alto indicado
                 int winWidth = 935+15; // 830+15; // 830; // 1200; // 1700; // 2800;
-                int winHeight = 1070+57; //995+57; // 835+57; // 825; // 865; // 1600; //1800
+                int winHeight = 920+57; //1070+57; //995+57; // 835+57; // 825; // 865; // 1600; //1800
 
                 var mauiWindow = handler.VirtualView;
                 var nativeWindow = handler.PlatformView;

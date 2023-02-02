@@ -4,14 +4,41 @@
              x:Class="gcnl_AnalizarFrases_MAUI.MainPage"
              Appearing="ContentPage_Appearing"
              Title="Analizar texto usando Cloud Natural Language">
+    <ContentPage.Resources>
+        <Style x:Key="ImgExpander" TargetType="{x:Type Image}">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="HeightRequest" Value="20"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style x:Key="StackExpander" TargetType="{x:Type StackLayout}">
+            <Setter Property="Margin" Value="6,12,6,6"/>
+        </Style>
+    </ContentPage.Resources>
     <ScrollView Padding="10">
         <VerticalStackLayout Spacing="6">
             <!-- Con un margin mínimo de 2 en el StackLayout que contiene el Frame, 
                  se evita que se corte el borde del Frame en la pate inferior -->
             <Frame Padding="6" Margin="0">
                 <StackLayout Margin="2">
-                    <StackLayout Spacing="0">
-                        <ListView x:Name="listViewFrases" HeightRequest="300"
+                    <!-- Expander -->
+                    <StackLayout Orientation="Horizontal" Padding="4" BackgroundColor="{DynamicResource Primary}">
+                        <Label Text="Lista de textos" 
+                               TextColor="White" HorizontalOptions="FillAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelListaTextos_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image x:Name="ImgListaTextos" Style="{StaticResource ImgExpander}" 
+                               Source="collapse_white.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelListaTextos_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <StackLayout x:Name="grbListaTextos" Style="{StaticResource StackExpander}" Spacing="0">
+                        <ListView x:Name="listViewFrases" HeightRequest="200"
                                   BackgroundColor="WhiteSmoke"
                                   VerticalOptions="StartAndExpand" 
                                   ItemSelected="listViewFrases_ItemSelected">

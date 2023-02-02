@@ -66,6 +66,10 @@ Revisión actual del 02/feb/2023
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\collapse.png" />
+	  <None Remove="Resources\Images\collapse_white.png" />
+	  <None Remove="Resources\Images\expand.png" />
+	  <None Remove="Resources\Images\expand_white.png" />
 	  <None Remove="Resources\Raw\key.json.readme.txt" />
 	</ItemGroup>
 
