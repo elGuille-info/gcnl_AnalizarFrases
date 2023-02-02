@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 //using Google.Apis.Discovery;
 using Google.Cloud.Language.V1;
 using Google.Protobuf.Collections;
+
 using static Google.Cloud.Language.V1.AnnotateTextRequest.Types;
 
 namespace gcnl_AnalizarTextos;
@@ -42,7 +43,20 @@ public class Frases
 
     // Los valores static/compartidos para usar en todas las FrasesPrueba o textos analizados mientras está activo el programa.
 
-    //private static LanguageServiceClient? client;
+    // Defino las frases de prueba en esta clase (02/feb/23 10.30)
+    public static readonly List<string> FrasesPrueba = new() {
+            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",
+            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré?",
+            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré?",
+            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré?",
+            "El 8 de febrero voy en bici al camino de Santiago desde Sarria ¿crees que aguantaré?",
+            "El 8 de febrero voy en bici al camino de Santiago desde Sarria. ¿crees que aguantaré?",
+            "Ask not what your country can do for you, ask what you can do for your country.",
+            "On February 8 I go, with Ana and her cousin, by bike to the Camino de Santiago from Sarria. Do you think I will endure with the bike?",
+            "El 8 de febrero iré en bici al camino de Santiago desde Sarria. ¿Crees que lo lograré?",
+            "El 8 de febrero iré en bici al camino de Santiago desde Sarria ¿crees que lo lograré?"
+        };
+
     private static LanguageServiceClient? client;
     private static readonly List<Frases> colFrases = new();
 
@@ -319,7 +333,7 @@ public class Frases
                 break;
             }
         }
-        if (quitar > -1) 
+        if (quitar > -1)
         {
             colRelaciones.RemoveAt(quitar);
         }
@@ -536,7 +550,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
           index += 1
     */
     //public string MostrarTokens(AnnotateTextResponse self)
-    
+
     /// <summary>
     /// Mostrar todos los tokens incluyendo las partes que no tienen contenido.
     /// </summary>
@@ -790,7 +804,7 @@ el 8 de febrero voy en bici al camino de santiago desde sarria ¿crees que aguan
                 if (i == 0 || i == ordenados.Count - 1)
                 {
                     if (elToken.Token.DependencyEdge.Label == DependencyEdge.Types.Label.P &&
-                        "¿?¡!()[]{}".Contains(elToken.Token.Text.Content) == false) 
+                        "¿?¡!()[]{}".Contains(elToken.Token.Text.Content) == false)
                     {
                         continue;
                     }

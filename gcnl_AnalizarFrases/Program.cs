@@ -29,39 +29,19 @@ class Program
         // La evaluación de la relevancia/salience influye si los nombres propios están en mayúsculas o no.
         // El que la frase tenga varias separadas por punto (sentencias), también cambia las relaciones
         // (en principio estaban pensadas para una 'sentencia'.
-        List<string> frases = new() {
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré?",
-            "El 8 de febrero voy en bici al camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de febrero voy en bici al camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "Ask not what your country can do for you, ask what you can do for your country.",
-            "On February 8 I go, with Ana and her cousin, by bike to the Camino de Santiago from Sarria. Do you think I will endure with the bike?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré con la bici?",
-            "El 8 de febrero iré en bici al camino de Santiago desde Sarria. ¿Crees que lo lograré?",
-            "El 8 de febrero iré en bici al camino de Santiago desde Sarria ¿crees que lo lograré?"
-        };
         string text, ultimaOriginal;
 
         Console.WriteLine("Pruebas de Google Cloud Natural Language");
         Console.WriteLine();
-        text = frases[^1]; // la última
+        text = Frases.FrasesPrueba[^1]; // la última
         ultimaOriginal = text;
 
         bool repitiendo = false;
         do
         {
-            for (int i = 0; i < frases.Count; i++)
+            for (int i = 0; i < Frases.FrasesPrueba.Count; i++)
             {
-                Console.WriteLine($"{(char)(97 + i)}- {frases[i]}");
+                Console.WriteLine($"{(char)(97 + i)}- {Frases.FrasesPrueba[i]}");
             };
             if (repitiendo)
             {
@@ -91,7 +71,7 @@ class Program
                     var seleccionada = resText[0] - 97;
                     if (seleccionada > -1 && seleccionada < 26)
                     {
-                        text = frases[seleccionada];
+                        text = Frases.FrasesPrueba[seleccionada];
                         ultimaOriginal = text;
                     }
                     else

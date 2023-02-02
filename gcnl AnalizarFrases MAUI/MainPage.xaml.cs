@@ -21,40 +21,19 @@ namespace gcnl_AnalizarFrases_MAUI
         public MainPage()
         {
             InitializeComponent();
-            listViewFrases.ItemsSource = FrasesPrueba;
+            listViewFrases.ItemsSource = Frases.FrasesPrueba;
         }
 
         private Frases frase = null;
         private string text, ultimaOriginal;
 
-        private readonly List<string> FrasesPrueba = new() {
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré?",
-            "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré?",
-            "El 8 de febrero voy en bici al camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de febrero voy en bici al camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "Ask not what your country can do for you, ask what you can do for your country.",
-            "On February 8 I go, with Ana and her cousin, by bike to the Camino de Santiago from Sarria. Do you think I will endure with the bike?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿Crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿Crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria ¿crees que aguantaré con la bici?",
-            "El 8 de Febrero voy, con Ana y su prima, en bici al Camino de Santiago desde Sarria. ¿crees que aguantaré con la bici?",
-            "El 8 de febrero iré en bici al camino de Santiago desde Sarria. ¿Crees que lo lograré?",
-            "El 8 de febrero iré en bici al camino de Santiago desde Sarria ¿crees que lo lograré?"
-        };
-        
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
             QuitarAviso();
             // si no hay texto asignado, asignar la última frase de la lista
             if (string.IsNullOrEmpty(txtTexto.Text))
             {
-                txtTexto.Text = FrasesPrueba[^1];
+                txtTexto.Text = Frases.FrasesPrueba[^1];
             }
             // si frase no está asignada, deshabilitar los botones de mostrar
             bool habilitar = frase != null;
