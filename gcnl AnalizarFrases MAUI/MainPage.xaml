@@ -36,6 +36,10 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelListaTextos_Tapped" />
                             </Image.GestureRecognizers>
                         </Image>
+                        <!-- Añadir el TapGestureRecognizer al StackLayout por si se pulsa fuera de la etiqueta o la imagen -->
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelListaTextos_Tapped" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <StackLayout x:Name="grbListaTextos" Style="{StaticResource StackExpander}" Spacing="0">
                         <ListView x:Name="listViewFrases" HeightRequest="200"
