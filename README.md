@@ -35,6 +35,8 @@ Una aplicación para .NET MAUI donde se usa directamente la clase Frases (no fun
 
 [Ejemplos de Google Cloud Natural Language para consola y .NET MAUI](https://www.elguillemola.com/ejemplos-de-google-cloud-natural-language-para-consola-y-net-maui/)
 
+En este post te cuento algunas de las cosas a destacar (o trucos) del proyecto para .NET MAUI.
+
 <br>
 
 ## Capturas
