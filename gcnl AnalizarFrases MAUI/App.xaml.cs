@@ -2,6 +2,11 @@
 using System.Diagnostics;
 using System.IO;
 
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
+using Microsoft.Maui.Storage;
+
 namespace gcnl_AnalizarFrases_MAUI
 {
     public partial class App : Application

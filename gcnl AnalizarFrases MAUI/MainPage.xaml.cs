@@ -1,9 +1,12 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
-using gcnl_AnalizarFrases;
+using gcnl_AnalizarTextos;
 
-using Google.Cloud.Language.V1;
-using Google.Protobuf.Collections;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 
 namespace gcnl_AnalizarFrases_MAUI
 {
@@ -17,7 +20,6 @@ namespace gcnl_AnalizarFrases_MAUI
 
         private Frases frase = null;
         private string text, ultimaOriginal;
-        //private StringBuilder sbConsole = new();
 
         private readonly List<string> FrasesPrueba = new() {
             "El 8 de Febrero voy en bici al Camino de Santiago desde Sarria ¿crees que aguantaré?",

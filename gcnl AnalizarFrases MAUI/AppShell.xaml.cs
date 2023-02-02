@@ -1,4 +1,6 @@
-﻿namespace gcnl_AnalizarFrases_MAUI
+﻿using Microsoft.Maui.Controls;
+
+namespace gcnl_AnalizarFrases_MAUI
 {
     public partial class AppShell : Shell
     {
